@@ -22,6 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const modalTrigger = document.querySelectorAll('[data-modal]'),
         modal = document.querySelector('.modal'),
         modalCloseBtn = document.querySelector('[data-close]');
+<<<<<<< HEAD
 
     modalTrigger.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -37,6 +38,45 @@ window.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('show');
         // Либо вариант с toggle - но тогда назначить класс в верстке
         document.body.style.overflow = '';
+=======
+        modalForm = document.getElementById('modalForm');
+
+    
+    
+    function openModal() {
+        modal.style.display = 'block';
+        setTimeout(() => {
+            modal.classList.add('show');
+            modal.classList.remove('hide');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+    
+    const openModalAfterDelay = () => {
+         
+        setTimeout(() => {
+            openModal(); 
+                
+        }, 2000); // Задержка в миллисекундах (здесь 5 секунд)
+        
+    };
+
+    modalTrigger.forEach(btn => {
+        btn.addEventListener('click', openModal);
+    });
+
+   
+
+    function closeModal() {
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+        
+        document.body.style.overflow = '';
+
+        setTimeout(() => {
+            modal.style.display = 'none'; // Убираем модальное окно после завершения анимации
+        }, 500); 
+>>>>>>> 96876d6 (New)
     }
 
 
@@ -56,9 +96,24 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+<<<<<<< HEAD
+=======
+modalForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Отменяем стандартное поведение (перезагрузка страницы)
+    closeModal();
+    modalForm.reset();
+        
+});
+
+openModalAfterDelay();
+>>>>>>> 96876d6 (New)
 
 
 
 
+<<<<<<< HEAD
 
 })
+=======
+});
+>>>>>>> 96876d6 (New)
