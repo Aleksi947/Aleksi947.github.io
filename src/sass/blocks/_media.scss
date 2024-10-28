@@ -345,6 +345,8 @@
     .skills {
         &__items {
             margin-top: 20px;
+            display: flex;
+            flex-direction: column;
         }
         &__ratings {
             grid-template-columns: repeat(auto-fit,300px);
