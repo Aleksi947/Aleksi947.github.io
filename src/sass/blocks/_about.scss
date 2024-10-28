@@ -80,7 +80,7 @@
   // Анимация с задержкой для разных элементов
 .fade-in {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(100px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
   
