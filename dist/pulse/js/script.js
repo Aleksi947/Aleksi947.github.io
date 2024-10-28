@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
     $('.carousel__inner').slick({
         speed: 1200,
         adaptiveHeight: true,
@@ -8,13 +8,23 @@ $(document).ready(function(){
             {
                 breakpoint: 992,
                 settings: {
-                    dots: true,
-                    arrows: false
+                    dots: false,
+                    arrows: false,
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    dots: false,
+                    arrows: false,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    adaptiveHeight: true
                 }
             }
         ]
     });
-    
+
     $('ul.catalog__tabs').on('click', 'li:not(.catalog__tab_active)', function() {
         $(this)
           .addClass('catalog__tab_active').siblings().removeClass('catalog__tab_active')
@@ -35,10 +45,10 @@ $(document).ready(function(){
     toggleSlide('.catalog-item__back');
 
     // Modal
-
     $('[data-modal=consultation]').on('click', function() {
         $('.overlay, #consultation').fadeIn('slow');
     });
+
     $('.modal__close').on('click', function() {
         $('.overlay, #consultation, #thanks, #order').fadeOut('slow');
     });
@@ -47,10 +57,11 @@ $(document).ready(function(){
         $(this).on('click', function() {
             $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
             $('.overlay, #order').fadeIn('slow');
-        })
+        });
     });
 
-    function validateForms(form){
+    // Функция валидации форм
+    function validateForms(form) {
         $(form).validate({
             rules: {
                 name: {
@@ -66,41 +77,60 @@ $(document).ready(function(){
             messages: {
                 name: {
                     required: "Пожалуйста, введите свое имя",
-                    minlength: jQuery.validator.format("Введите {0} символа!")
-                  },
+                    minlength: jQuery.validator.format("Введите не менее {0} символов!")
+                },
                 phone: "Пожалуйста, введите свой номер телефона",
                 email: {
-                  required: "Пожалуйста, введите свою почту",
-                  email: "Неправильно введен адрес почты"
+                    required: "Пожалуйста, введите свою почту",
+                    email: "Неправильно введен адрес почты"
                 }
             }
         });
-    };
+    }
 
     validateForms('#consultation-form');
     validateForms('#consultation form');
     validateForms('#order form');
 
+    // Маска для ввода телефона
     $('input[name=phone]').mask("+7 (999) 999-99-99");
 
+    // Обработка отправки формы
     $('form').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: "POST",
-            url: "mailer/smart.php",
-            data: $(this).serialize()
-        }).done(function() {
-            $(this).find("input").val("");
-            $('#consultation, #order').fadeOut();
-            $('.overlay, #thanks').fadeIn('slow');
+        e.preventDefault(); // Останавливаем стандартное поведение формы
 
-            $('form').trigger('reset');
-        });
-        return false;
+        // Проверяем, прошла ли форма валидацию
+        if (!$(this).valid()) {
+            return; // Если форма не прошла валидацию, отправка не происходит
+        }
+
+        // Получаем имя пользователя из текущей формы
+        var userName = $(this).find('input[name="name"]').val();
+
+        // Закрываем текущие модальные окна
+        $('#consultation, #order').fadeOut();
+
+        // Очищаем поля формы
+        $(this).find("input").val("");
+
+        // Вставляем имя пользователя в модальное окно благодарности
+        $('#thanks .modal__subtitle').text('Спасибо, ' + userName + ', за вашу заявку!');
+
+        // Открываем модальное окно с благодарностью
+        $('.overlay, #thanks').fadeIn('slow');
+
+        // Сбрасываем форму
+        $(this).trigger('reset');
+    });
+
+    // Закрытие модальных окон при клике вне формы
+    $('.overlay').on('click', function(e) {
+        if ($(e.target).is('.overlay')) {
+            $('.overlay, #consultation, #thanks, #order').fadeOut('slow');
+        }
     });
 
     // Smooth scroll and pageup
-
     $(window).scroll(function() {
         if ($(this).scrollTop() > 1600) {
             $('.pageup').fadeIn();
@@ -109,7 +139,7 @@ $(document).ready(function(){
         }
     });
 
-    $("a[href=#up]").click(function(){
+    $("a[href=#up]").click(function() {
         const _href = $(this).attr("href");
         $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
         return false;
@@ -117,4 +147,6 @@ $(document).ready(function(){
 
     new WOW().init();
 });
+
+
 

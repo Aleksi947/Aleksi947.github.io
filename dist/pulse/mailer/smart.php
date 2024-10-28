@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
 
 $name = $_POST['name'];
@@ -9,17 +8,17 @@ require_once('phpmailer/PHPMailerAutoload.php');
 $mail = new PHPMailer;
 $mail->CharSet = 'utf-8';
 
-// $mail->SMTPDebug = 3;                               // Enable verbose debug output
-
+// /* $mail->SMTPDebug = 3;                               // Enable verbose debug output */
+$mail->SMTPDebug = 3;
 $mail->isSMTP();                                      // Set mailer to use SMTP
 $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'Aleksandr Lomakin';                 // Наш логин
+$mail->Username = 'hitsaaja94@gmail.com';                 // Наш логин
 $mail->Password = 'Otpagent56.F';                           // Наш пароль от ящика
-$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 465;                                    // TCP port to connect to
+$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 587;                                    // TCP port to connect to
  
-$mail->setFrom('', 'Pulse');   // От кого письмо 
+$mail->setFrom('hitsaaja94@gmail.com', 'Pulse');   // От кого письмо 
 $mail->addAddress('hitsaaja94@gmail.com');     // Add a recipient
 //$mail->addAddress('ellen@example.com');               // Name is optional
 //$mail->addReplyTo('info@example.com', 'Information');
@@ -42,49 +41,4 @@ if(!$mail->send()) {
     return true;
 }
 
-=======
-<?php 
-
-$name = $_POST['name'];
-$phone = $_POST['phone'];
-$email = $_POST['email'];
-
-require_once('phpmailer/PHPMailerAutoload.php');
-$mail = new PHPMailer;
-$mail->CharSet = 'utf-8';
-
-// $mail->SMTPDebug = 3;                               // Enable verbose debug output
-
-$mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'Aleksandr Lomakin';                 // Наш логин
-$mail->Password = 'Otpagent56.F';                           // Наш пароль от ящика
-$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 465;                                    // TCP port to connect to
- 
-$mail->setFrom('', 'Pulse');   // От кого письмо 
-$mail->addAddress('hitsaaja94@gmail.com');     // Add a recipient
-//$mail->addAddress('ellen@example.com');               // Name is optional
-//$mail->addReplyTo('info@example.com', 'Information');
-//$mail->addCC('cc@example.com');
-//$mail->addBCC('bcc@example.com');
-//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-$mail->isHTML(true);                                  // Set email format to HTML
-
-$mail->Subject = 'Данные';
-$mail->Body    = '
-		Пользователь оставил данные <br> 
-	Имя: ' . $name . ' <br>
-	Номер телефона: ' . $phone . '<br>
-	E-mail: ' . $email . '';
-
-if(!$mail->send()) {
-    return false;
-} else {
-    return true;
-}
-
->>>>>>> 96876d6 (New)
 ?>
