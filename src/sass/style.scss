@@ -10,8 +10,20 @@
     padding: 0;
     
     box-sizing: border-box;
+    /* border: 1px solid red; */
 
     
+}
+
+/* .slide-in-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+} */
+  
+.in-view-right {
+    opacity: 1;
+    transform: translateX(0);
 }
 //Slider
 

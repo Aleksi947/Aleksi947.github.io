@@ -63,19 +63,23 @@ document.addEventListener("DOMContentLoaded", () => {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("in-view"); // Добавляем класс, когда элемент видим
+          if (entry.target.classList.contains("slide-in-right")) {
+            entry.target.classList.add("in-view-right"); // Для появления справа
+          } else {
+            entry.target.classList.add("in-view"); // Для стандартной анимации
+          }
         } else {
-          entry.target.classList.remove("in-view"); // Убираем класс, когда элемент выходит из видимости
+          entry.target.classList.remove("in-view", "in-view-right"); // Убираем все классы
         }
       });
     },
     {
-      threshold: 0.1, // Порог, при котором элемент считается видимым (10% видимой области)
+      threshold: 0.1,
     }
   );
 
   // Наблюдаем за всеми элементами с классом fade-in
-  document.querySelectorAll(".fade-in").forEach((el) => {
+  document.querySelectorAll(".fade-in, .slide-in-right").forEach((el) => {
     observer.observe(el);
   });
   
