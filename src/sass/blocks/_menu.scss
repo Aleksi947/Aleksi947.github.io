@@ -32,7 +32,7 @@
     opacity: 0;
     transition: all 0.6s;
     transform: translateX(-100%);
-    transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
+    transition: opacity 0.9s ease, transform 0.9s ease, visibility 0.9s;
 
    &__overlay {
         position: fixed;
@@ -43,7 +43,7 @@
         background-color: rgba(0, 0, 0, 0.5); // Прозрачный черный фон
         visibility: hidden;
         opacity: 0;
-        transition: opacity 0.3s ease, visibility 0.3s;
+        transition: opacity 0.9s ease, visibility 0.9s;
         z-index: 9; // Должен быть ниже, чем меню
    }
         
@@ -63,7 +63,7 @@
         height: 100%;
         padding-top: 140px;
         padding-left: 40px;
-        transition: all 0.6s;
+        transition: all 0.9s;
         z-index: 10;
     }
     &__close {
@@ -92,7 +92,7 @@
             width: 15px;
             border-radius:100%;
             border: 1px solid #000000;
-            transition: all 0.6s;
+            transition: all 0.9s;
         }
         &:hover {
             &:before {
@@ -121,4 +121,15 @@
 .menu.active .menu__overlay {
     visibility: visible;
     opacity: 1;
+}
+
+.menu.closing {
+    opacity: 0;
+    transform: translateX(-100%); /* Плавное скрытие за экраном */
+    /* visibility не меняется здесь, чтобы скрытие произошло по завершении анимации */
+}
+
+.menu.closing .menu__overlay {
+    opacity: 0;
+    visibility: hidden;
 }

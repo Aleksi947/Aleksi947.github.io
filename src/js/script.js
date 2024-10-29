@@ -6,23 +6,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   hamburger.addEventListener("click", () => {
     menu.classList.add("active");
+    menu.classList.remove("closing");
   });
 
-  closeElem.addEventListener("click", () => {
+  // Закрытие меню с плавной анимацией
+  function closeMenu() {
+    menu.classList.add("closing"); // Добавляем класс закрытия
+    // Удаляем классы после завершения анимации
+    setTimeout(() => {
+      menu.classList.remove("active", "closing");
+    }, 900); // Таймаут соответствует длительности transition (0.6s)
+  }
+  // Закрытие меню по клику на кнопку "закрыть" или на оверлей
+  closeElem.addEventListener("click", closeMenu);
+  overlay.addEventListener("click", closeMenu);
+
+  /* closeElem.addEventListener("click", () => {
     menu.classList.remove("active");
-  });
+  }); */
 
   // Закрытие меню по клику на оверлей
-  overlay.addEventListener("click", () => {
+  /* overlay.addEventListener("click", () => {
     menu.classList.remove("active");
-  });
+  }); */
 
-  const counters = document.querySelectorAll(".skills__ratings-counter"),
+ /*  const counters = document.querySelectorAll(".skills__ratings-counter"),
     lines = document.querySelectorAll(".skills__ratings-line span");
 
   counters.forEach((item, i) => {
     lines[i].style.width = item.innerHTML;
   });
+ */
+  
 
   // Slider
   const slides = document.querySelector(".slides");
