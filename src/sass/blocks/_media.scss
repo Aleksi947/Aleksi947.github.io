@@ -410,6 +410,10 @@
         display: none; /* Можно скрыть кнопки, чтобы не мешали */
     }
 
+    .carousel-indicators {
+        display: none;
+    }
+
     .carousel-control-prev,
     .carousel-control-next {
         display: none;
