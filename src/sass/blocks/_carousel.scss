@@ -1,0 +1,24 @@
+/* Slider */
+
+/* Устанавливаем максимальную ширину слайдера */
+#carouselExampleCaptions {
+    max-width: 800px; /* Измените значение по необходимости */
+    margin: 0 auto; /* Центруем слайдер */
+}
+
+#carouselExampleCaptions .carousel-item {
+    max-height: 500px; /* Установите желаемую максимальную высоту */
+    overflow: hidden; /* Обрежем изображение, если оно выходит за границы */
+}
+
+/* Устанавливаем фиксированную высоту для изображений */
+#carouselExampleCaptions .carousel-item img {
+    height: 100%; /* Измените значение по необходимости */
+    object-fit: cover;
+    width: 100%;
+     /* Масштабируем изображение, чтобы оно заполняло блок */
+}
+
+.slider-buttons {
+    display: none; /* Это уберет кнопки из видимости, но сохранит их в DOM */
+}

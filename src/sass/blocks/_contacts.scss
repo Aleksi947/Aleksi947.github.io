@@ -104,3 +104,16 @@
         line-height: 21px;
     }
 }
+
+.contacts__input.error input,
+.contacts__textarea.error textarea,
+.contacts__policy.error input {
+    border: 1px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.7em;
+    margin-top: 3px;
+    display: block;
+}

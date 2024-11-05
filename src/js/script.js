@@ -21,23 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   closeElem.addEventListener("click", closeMenu);
   overlay.addEventListener("click", closeMenu);
 
-  /* closeElem.addEventListener("click", () => {
-    menu.classList.remove("active");
-  }); */
-
-  // Закрытие меню по клику на оверлей
-  /* overlay.addEventListener("click", () => {
-    menu.classList.remove("active");
-  }); */
-
- /*  const counters = document.querySelectorAll(".skills__ratings-counter"),
-    lines = document.querySelectorAll(".skills__ratings-line span");
-
-  counters.forEach((item, i) => {
-    lines[i].style.width = item.innerHTML;
-  });
- */
-  
+ 
 
   // Slider
   const slides = document.querySelector(".slides");
@@ -68,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showSlide(currentIndex - 1);
   });
 
-   setInterval(() => {
+  setInterval(() => {
     showSlide(currentIndex + 1);
   }, 7000);
 
@@ -97,9 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".fade-in, .slide-in-right").forEach((el) => {
     observer.observe(el);
   });
-  
-  // Validation
 
+  // Validation
 
   const form = document.querySelector(".contacts__form");
   const nameInput = document.querySelector("#name");
