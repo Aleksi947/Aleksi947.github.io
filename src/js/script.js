@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
  
 
   // Slider
-  const slides = document.querySelector(".slides");
+  /* const slides = document.querySelector(".slides");
   const slide = document.querySelectorAll(".slide");
   const prevButton = document.querySelector(".prev");
   const nextButton = document.querySelector(".next");
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   setInterval(() => {
     showSlide(currentIndex + 1);
-  }, 7000);
+  }, 7000); */
 
   // Animation
 
